@@ -4,7 +4,7 @@
 
 ## 1. Overview
 
-[App Name] ("the app", "we", "our") is a personal grocery tracking tool. This policy explains how the app handles your data. The short version: **almost all data stays on your device and we never see it.**
+[AmuOvi Cart] ("the app", "we", "our") is a personal grocery tracking tool. This policy explains how the app handles your data. The short version: **almost all data stays on your device and we never see it.**
 
 ## 2. Data We Collect and Store
 
@@ -70,5 +70,5 @@ If we make material changes to this policy, we will update the "Last updated" da
 
 If you have any questions about this privacy policy, please contact us at:
 
-**[Your Name / Developer Name]**  
-**Email: [your@email.com]**
+**Gerome Regy**  
+**geromer@yahoo.com**
