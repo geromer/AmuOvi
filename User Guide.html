@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>AmuOvi Easy Cart — User Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #E6ECF3;
+    --surface:    #FFFCF1;
+    --surface2:   #EFE6CC;
+    --line:       #C9D3E0;
+    --primary:    #4A6F9D;
+    --primarySoft:#E0E8F3;
+    --accent:     #A07A1A;
+    --accentSoft: #EAD9A8;
+    --ink:        #222127;
+    --ink2:       #6E6A78;
+    --ink3:       #9D9AA8;
+    --warning:    #A0701A;
+    --success:    #3D7F62;
+    --danger:     #9F4538;
+    --serif:      "Cormorant Garamond", Georgia, serif;
+    --sans:       "Manrope", -apple-system, system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
+  .page{max-width:820px;margin:0 auto;padding:60px 32px 100px}
+
+  /* — Cover — */
+  .cover{padding:60px 0 50px;border-bottom:1px solid var(--line);margin-bottom:50px}
+  .kicker{font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-family:var(--serif);font-style:italic;font-weight:500;font-size:60px;line-height:1;margin:0;letter-spacing:-1px}
+  h1 em{color:var(--primary);font-style:italic;font-weight:500}
+  .tag{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink2);margin-top:14px}
+  .meta{margin-top:32px;font-size:12px;color:var(--ink3);letter-spacing:0.5px}
+
+  /* — Headings — */
+  h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:34px;color:var(--ink);letter-spacing:-0.5px;margin:64px 0 6px;line-height:1.1}
+  h2 .num{display:inline-block;font-style:normal;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--accent);background:var(--surface);padding:4px 10px;border-radius:4px;margin-right:14px;vertical-align:middle;border:1px solid var(--accentSoft)}
+  h3{font-family:var(--sans);font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-0.1px;margin:34px 0 8px}
+  .h2sub{color:var(--ink2);font-size:15px;margin:0 0 20px;max-width:65ch}
+
+  p{margin:10px 0;color:#2a2a2a;font-size:15px;max-width:68ch}
+  b, strong { color:var(--ink); font-weight:700 }
+  a { color: var(--primary); }
+  code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;background:var(--surface);padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--ink)}
+
+  /* — Step list — */
+  .steps{margin:18px 0 8px;padding:0;list-style:none;counter-reset:step}
+  .steps li{counter-increment:step;position:relative;padding:14px 18px 14px 60px;background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:14.5px}
+  .steps li::before{content:counter(step);position:absolute;left:14px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;display:flex;align-items:center;justify-content:center}
+  .steps li b{display:block;font-size:13px;color:var(--ink);margin-bottom:2px}
+  .steps li span{color:var(--ink2);font-size:13.5px}
+
+  /* — Callout box — */
+  .note{margin:18px 0;padding:14px 18px 14px 18px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--primary);border-radius:10px;font-size:14px;color:var(--ink2)}
+  .note.gold{border-left-color:var(--accent);background:#FFFAEB}
+  .note.warn{border-left-color:var(--warning);background:#FFF6E5}
+  .note.danger{border-left-color:var(--danger);background:#FBEDEB}
+  .note.green{border-left-color:var(--success);background:#EAF4EE}
+  .note b{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;color:var(--ink);margin-bottom:4px}
+
+  /* — Two-column feature row — */
+  .feat{display:grid;grid-template-columns:130px 1fr;gap:24px;align-items:flex-start;padding:20px 0;border-bottom:1px dashed var(--line)}
+  .feat:last-child{border-bottom:none}
+  .feat .icon{width:64px;height:64px;border-radius:14px;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:30px}
+  .feat .icon.gold{color:var(--accent)}
+  .feat .icon.green{color:var(--success)}
+  .feat .icon.red{color:var(--danger)}
+  .feat h3{margin:2px 0 4px;font-size:17px}
+  .feat p{font-size:14.5px;margin:6px 0;max-width:none}
+
+  /* — Glossary table — */
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink2);background:transparent}
+  td.icon-cell{width:48px;text-align:center;color:var(--primary);font-size:18px}
+  td b{color:var(--ink)}
+
+  /* — Tip cards — */
+  .tipGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media (max-width: 640px){ .tipGrid{grid-template-columns:1fr} }
+  .tipCard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .tipCard .label{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .tipCard h4{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;margin:0 0 4px;color:var(--ink)}
+  .tipCard p{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.5}
+
+  /* — Footer — */
+  .footer{margin-top:80px;padding-top:30px;border-top:1px solid var(--line);font-size:13px;color:var(--ink3);text-align:center;font-family:var(--serif);font-style:italic}
+
+  /* — TOC — */
+  .toc{margin:30px 0 0;padding:18px 22px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+  .toc .label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .toc ol{margin:0;padding:0;list-style:none;columns:2;column-gap:24px}
+  .toc ol li{padding:5px 0;font-size:14px;color:var(--ink2);break-inside:avoid}
+  .toc ol li a{text-decoration:none;color:var(--ink)}
+  .toc ol li a:hover{color:var(--primary)}
+  .toc ol li::before{content:'·';color:var(--accent);margin-right:8px;font-weight:700}
+
+  /* — Pill — */
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:var(--primarySoft);color:var(--primary);font-size:12px;font-weight:700;border-radius:999px;letter-spacing:0.2px}
+  .pill.gold{background:var(--accentSoft);color:var(--accent)}
+  .pill.green{background:#E1F0E9;color:var(--success)}
+  .pill.red{background:#FBEDEB;color:var(--danger)}
+
+  /* — Highlights grid (intro section) — */
+  .intro{margin:30px 0 40px;padding:24px 26px;background:var(--surface);border:1px solid var(--line);border-radius:14px;border-left:5px solid var(--accent)}
+  .intro p{margin:0 0 6px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink);line-height:1.45;max-width:none}
+  .intro p:last-child{margin-bottom:0}
+  .intro p b{font-family:var(--sans);font-style:normal;color:var(--primary);font-weight:700;letter-spacing:-0.2px}
+  .hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:24px 0 8px}
+  .hcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+  .hcard .ic{width:36px;height:36px;border-radius:9px;background:var(--primarySoft);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:4px}
+  .hcard.gold .ic{background:var(--accentSoft)}
+  .hcard.green .ic{background:#E1F0E9}
+  .hcard h4{margin:0;font-family:var(--sans);font-weight:700;font-size:14px;color:var(--ink);letter-spacing:-0.1px}
+  .hcard p{margin:0;font-size:12.5px;color:var(--ink2);line-height:1.5;max-width:none}
+
+  pre{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--ink);white-space:pre-wrap;line-height:1.5;margin:14px 0;overflow:auto}
+
+  @media print{
+    html,body{background:#fff}
+    .page{padding:30px}
+    h2{page-break-after:avoid}
+    .feat,.steps li,.note{page-break-inside:avoid}
+    .toc{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ─────────── COVER ─────────── -->
+  <header class="cover">
+    <div class="kicker">User Guide · v2.0 · May 2026</div>
+    <h1>AmuOvi <em>Easy Cart</em></h1>
+    <div class="tag">Grocery shopping, made calm.</div>
+    <div class="meta">Read time ~12 minutes · Updated for current build</div>
+  </header>
+
+  <div class="intro">
+    <p><b>AmuOvi Easy Cart</b> is a calm, private, offline-first grocery companion. It turns shopping into three simple acts — <b>Plan, Shop, Review</b> — and quietly learns from your habits to help you spend less without thinking about it.</p>
+    <p>No account. No cloud. No tracking. Everything lives on your phone.</p>
+  </div>
+
+  <h3 style="margin-top:0">At a glance</h3>
+  <p>The features that make Easy Cart different from a plain shopping list:</p>
+
+  <div class="hgrid">
+    <div class="hcard">
+      <div class="ic">📷</div>
+      <h4>Offline barcode scanning</h4>
+      <p>EAN, UPC, QR. Works in basement aisles with no signal. Names auto-fill when you're back online.</p>
+    </div>
+    <div class="hcard gold">
+      <div class="ic">⚠️</div>
+      <h4>Price warnings</h4>
+      <p>Tells you when you're paying more than your own historical low — and which store had it cheaper.</p>
+    </div>
+    <div class="hcard">
+      <div class="ic">🔔</div>
+      <h4>Smart restock reminders</h4>
+      <p>Detects buying patterns (milk every 7 days, coffee every 21) and schedules local notifications.</p>
+    </div>
+    <div class="hcard green">
+      <div class="ic">📊</div>
+      <h4>Spending insights</h4>
+      <p>Trend chart, category donut, store reports, and one "quiet observation" each visit with a specific dollar recommendation.</p>
+    </div>
+    <div class="hcard">
+      <div class="ic">📈</div>
+      <h4>Per-item price chart</h4>
+      <p>Tap any history row to see how that product's price has moved over time across stores.</p>
+    </div>
+    <div class="hcard gold">
+      <div class="ic">👨‍👩‍👧</div>
+      <h4>Family sharing</h4>
+      <p>Share your reminder list via any messaging app. The link auto-imports into the recipient's Easy Cart.</p>
+    </div>
+    <div class="hcard">
+      <div class="ic">📡</div>
+      <h4>WiFi sync</h4>
+      <p>Copy your data between two phones over local WiFi. No cloud involved.</p>
+    </div>
+    <div class="hcard green">
+      <div class="ic">📄</div>
+      <h4>CSV export</h4>
+      <p>Every purchase exportable as a spreadsheet for budgeting apps, Numbers, or Excel.</p>
+    </div>
+    <div class="hcard">
+      <div class="ic">🔒</div>
+      <h4>Fully private</h4>
+      <p>SQLite on your device. No account, no analytics, no third-party SDKs. Uninstall = data gone.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:24px">This guide walks you through every feature — from your first scan to advanced flows like WiFi sync, deep-link import, and Spending Insights with category breakdowns. Skim the table of contents below or read straight through; sections are independent.</p>
+
+  <!-- ─── Patience pays callout ─── -->
+  <div class="note gold" style="margin-top:30px">
+    <b>Read this first — give it 2 to 3 weeks.</b>
+    <p style="margin:6px 0 0;color:var(--ink);font-size:14.5px;line-height:1.6;max-width:none">
+      Easy Cart gets <i>noticeably</i> smarter as you use it. The first time you scan something, you'll type the name, price, and category yourself. From your <b>second purchase onward</b>, the same product auto-fills everything — name, last price, quantity, unit, category, and even the cheapest store you bought it at. After 2 or 3 weeks of regular shopping, most of your basket fills itself.
+    </p>
+  </div>
+
+  <h3 style="margin-top:36px">What "gets smarter" actually means</h3>
+  <p>These features only work once you have history. The more trips you log, the more value they deliver:</p>
+
+  <table>
+    <thead><tr><th style="width:36%">Feature</th><th>Needs to work properly</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>📷 Name auto-fill on scan</b></td>
+        <td>At least <b>1 prior scan</b> of the same barcode. After that, scanning is instant — no typing.</td>
+      </tr>
+      <tr>
+        <td><b>⌨️ Type-ahead suggestions</b></td>
+        <td>At least <b>a handful of manual entries</b>. Once you've added "bananas" once, typing "ba" suggests it next time with everything pre-filled.</td>
+      </tr>
+      <tr>
+        <td><b>⚠️ Price warnings</b></td>
+        <td>You need to have bought the same item at <b>2+ different prices</b> (or stores). Easy Cart compares against your own historical low.</td>
+      </tr>
+      <tr>
+        <td><b>🔔 Restock pattern detection</b></td>
+        <td>At least <b>3-4 purchases</b> of the same item, spaced out. Then Easy Cart can suggest "you buy this every ~7 days."</td>
+      </tr>
+      <tr>
+        <td><b>📊 Spending insights & trends</b></td>
+        <td>At least <b>2 weeks of trips</b> for the weekly view; <b>2 months</b> for the monthly chart to feel meaningful.</td>
+      </tr>
+      <tr>
+        <td><b>📈 Per-item price chart</b></td>
+        <td>At least <b>2 purchases</b> of the same item over time.</td>
+      </tr>
+      <tr>
+        <td><b>✨ "Quiet observation" recommendation</b></td>
+        <td>Trips at <b>2+ different stores</b>, a few times each. Easy Cart compares your real basket costs.</td>
+      </tr>
+      <tr>
+        <td><b>🏷️ Category breakdown donut</b></td>
+        <td>Categorize items as you add them. After a couple weeks, the donut reflects your real spending shape.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Tips to bootstrap faster</h3>
+
+  <div class="tipGrid">
+    <div class="tipCard">
+      <div class="label">Bootstrap tip</div>
+      <h4>Categorize from the start.</h4>
+      <p>It only takes one extra tap per item, but the insights donut needs categorized data to be useful. Start clean, thank yourself later.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Bootstrap tip</div>
+      <h4>Don't skip the first trips.</h4>
+      <p>The first 3-4 trips feel like more work than a plain list — that's normal. You're <b>teaching</b> the app. By trip 5, scanning becomes scrolling.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Bootstrap tip</div>
+      <h4>Always save the store name.</h4>
+      <p>The "cheaper at X" feature and the cheapest-store insight both depend on having store names attached to trips. Type it even if you're tired.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Bootstrap tip</div>
+      <h4>Edit weird scans early.</h4>
+      <p>If a barcode shows the wrong name (cross-brand match in Open Food Facts), tap the pencil and fix it once — the correction sticks forever.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:24px;font-style:italic;color:var(--ink2);font-family:var(--serif);font-size:17px">In short: the first two weeks are an investment. After that, Easy Cart starts working <i>for</i> you instead of <i>with</i> you.</p>
+
+  <nav class="toc">
+    <div class="label">In this guide</div>
+    <ol>
+      <li><a href="#quickstart">Quick start</a></li>
+      <li><a href="#tour">The main screen</a></li>
+      <li><a href="#scanning">Adding items</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#cart">The cart & price warnings</a></li>
+      <li><a href="#done">Saving a trip & trip summary</a></li>
+      <li><a href="#reminders">Shopping reminders</a></li>
+      <li><a href="#restock">Restock reminders</a></li>
+      <li><a href="#insights">Spending insights</a></li>
+      <li><a href="#history">History, search & price chart</a></li>
+      <li><a href="#export">CSV export</a></li>
+      <li><a href="#sync">WiFi sync</a></li>
+      <li><a href="#share">Family sharing & deep-link import</a></li>
+      <li><a href="#tips">Tips & shortcuts</a></li>
+      <li><a href="#privacy">Privacy & your data</a></li>
+      <li><a href="#troubleshoot">Troubleshooting</a></li>
+    </ol>
+  </nav>
+
+  <!-- ─────────── QUICK START ─────────── -->
+  <h2 id="quickstart"><span class="num">01</span>Quick start</h2>
+  <p class="h2sub">Three steps to go from "just installed" to "first trip saved."</p>
+
+  <ol class="steps">
+    <li><b>Tap the blue scan button (bottom right)</b><span>Point your camera at a product barcode. Easy Cart reads it instantly — works fully offline.</span></li>
+    <li><b>Confirm the item</b><span>The product name, quantity, unit, price, and category are pre-filled when possible. Edit as needed, then tap <b>Add to Cart</b>.</span></li>
+    <li><b>When you're done shopping, tap <span class="pill">Done</span></b><span>Enter (or pick) the store name. Easy Cart saves the trip and shows you a quick summary of how it compared to your usual spend at that store.</span></li>
+  </ol>
+
+  <div class="note gold">
+    <b>Don't have a barcode?</b>
+    Tap the <b>gold + button</b> next to the scan button to enter an item manually. Perfect for produce, bakery, and bulk items.
+  </div>
+
+  <!-- ─────────── TOUR ─────────── -->
+  <h2 id="tour"><span class="num">02</span>The main screen</h2>
+  <p class="h2sub">Everything lives on one screen. Tap a section heading to expand or collapse it — only one section is open at a time, so the view stays calm.</p>
+
+  <div class="feat">
+    <div class="icon">🛒</div>
+    <div>
+      <h3>Current Grocery Cart</h3>
+      <p>What you're shopping for right now. Shows your running total and a <b>weekly spending bar</b> comparing this week's spend to last week's. Tap <b>Done</b> when you check out.</p>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="icon gold">🔔</div>
+    <div>
+      <h3>Shopping Reminder</h3>
+      <p>Items you want to remember for next time, grouped by store. Any <b>Restock Reminders</b> that are due appear here too, in a separate group. Tap the checkbox while shopping to mark items as bought — they're auto-removed when you tap Done.</p>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="icon green">📊</div>
+    <div>
+      <h3>Spending Insights</h3>
+      <p>A hero number with a delta vs. your average, a 6-period trend chart you can toggle Week / Month / Year, a "quiet observation" with a specific recommendation, a category breakdown, and per-store reports. Updated automatically after every trip.</p>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="icon">🕓</div>
+    <div>
+      <h3>History</h3>
+      <p>Every item you've ever bought, searchable by name or store. Tap a row to see a <b>price-over-time chart</b> for that item. Tap the bell icon to set a restock reminder, the pencil to edit, or the trash to delete. Tap <b>CSV</b> in the header to export everything as a spreadsheet.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>The cloud icon in the top right</b>
+    Opens <b>WiFi Sync</b> — copy your whole purchase history between two phones on the same local network. See section 12.
+  </div>
+
+  <!-- ─────────── SCANNING ─────────── -->
+  <h2 id="scanning"><span class="num">03</span>Adding items</h2>
+  <p class="h2sub">Three ways to put something into your cart.</p>
+
+  <h3>Scan a barcode</h3>
+  <p>Tap the <b>blue scan button</b>. Point your camera at any barcode — EAN-13, UPC-A, or QR. Easy Cart recognizes it instantly. If you've scanned this product before, the name and category appear automatically. If not, Easy Cart tries to look it up online via Open Food Facts (when an internet connection is available).</p>
+
+  <h3>Enter manually</h3>
+  <p>Tap the <b>gold + button</b>. The same form opens, just empty. Type the item name and Easy Cart will <b>auto-suggest past items as you type</b> — tap a suggestion to fill the whole form (name, quantity, unit, price, category) in one tap. Otherwise fill the fields yourself.</p>
+
+  <div class="note green">
+    <b>New: Name suggestions</b>
+    Typing "milk" in the Add Item modal shows every past item containing "milk" with its last price, quantity, unit, and store. One tap pre-fills everything — including the right category.
+  </div>
+
+  <h3>Pick up something already on your Reminder list</h3>
+  <p>If an item is on your Shopping Reminder, you still need to scan or manually add it when you actually buy it — that way the price-warning logic works. Tap the checkbox in the reminder row to mark it as bought, and it'll be removed automatically after you save the trip.</p>
+
+  <div class="note">
+    <b>Units that compare correctly</b>
+    Easy Cart only compares prices across the same unit family — weight (<code>kg</code>/<code>g</code>), volume (<code>L</code>/<code>ml</code>), or count (<code>qty</code>). It won't tell you a kilo of apples is "cheaper" than a liter of milk.
+  </div>
+
+  <!-- ─────────── CATEGORIES ─────────── -->
+  <h2 id="categories"><span class="num">04</span>Categories</h2>
+  <p class="h2sub">Every item belongs to a category. Categories power the donut chart in Spending Insights.</p>
+
+  <p>When you add an item, a <b>Category selector</b> appears below the price field. Tap one of the pills to set the category — defaults to <b>General</b> if you don't change it. For scanned items, Easy Cart can sometimes auto-detect (e.g. products with "tomato" in the name go to Vegetable).</p>
+
+  <p>Available categories:</p>
+
+  <table>
+    <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td><b>General</b></td><td>Default · anything that doesn't fit below</td></tr>
+      <tr><td><b>Produce</b></td><td>Vegetables, fruits, fresh herbs</td></tr>
+      <tr><td><b>Dairy</b></td><td>Milk, cheese, yogurt, butter</td></tr>
+      <tr><td><b>Meat</b></td><td>Beef, chicken, fish, deli</td></tr>
+      <tr><td><b>Pantry</b></td><td>Oils, grains, canned goods, condiments</td></tr>
+      <tr><td><b>Bakery</b></td><td>Bread, pastries, tortillas</td></tr>
+      <tr><td><b>Snacks</b></td><td>Chips, sweets, crackers</td></tr>
+      <tr><td><b>Household</b></td><td>Cleaning supplies, paper goods, laundry</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>Why categorize?</b>
+    Once you have a few weeks of categorized data, Spending Insights can tell you things like <i>"42% of your spend went to produce this month"</i> or <i>"snacks doubled since February."</i>
+  </div>
+
+  <!-- ─────────── CART ─────────── -->
+  <h2 id="cart"><span class="num">05</span>The cart & price warnings</h2>
+  <p class="h2sub">The cart is your in-progress trip. It's cleared automatically when you tap Done.</p>
+
+  <p>For every item you add, Easy Cart quietly checks <b>your own purchase history</b> for the lowest price you've ever paid for that same item (normalized to per-kilogram, per-liter, or per-unit). If you're paying more this time, the cart row turns gold and shows you where you got it cheaper:</p>
+
+  <div class="note gold">
+    Whole Milk · 4.50<br/><b style="font-style:normal;font-family:var(--sans);font-size:13px;font-weight:600">⚠ cheaper at Costco: $3.79/L</b>
+  </div>
+
+  <p>This isn't a guess. It's based on what <i>you</i> have actually paid, at the same unit, in the past. The store name is the one where the cheapest historical price was recorded.</p>
+
+  <h3>Fix Names button</h3>
+  <p>If you scanned items offline and they show as raw barcode numbers (e.g. <code>0049000050202</code>), a <b>Fix Names</b> button appears in the cart header. Tap it once you're back online — Easy Cart looks up every unresolved name in one batch via Open Food Facts.</p>
+
+  <h3>Edit & remove</h3>
+  <p>Each cart row has a pencil (edit) and a trash (delete) icon. Edits update only the cart — historical purchases of the same item are unchanged.</p>
+
+  <!-- ─────────── DONE ─────────── -->
+  <h2 id="done"><span class="num">06</span>Saving a trip & trip summary</h2>
+  <p class="h2sub">Tap <span class="pill">Done</span> when you're at the checkout.</p>
+
+  <p>Easy Cart asks <b>"Where did you shop?"</b>. Recent stores appear as chips you can tap. Type a new name if it's a first visit. Tap <b>Confirm & Save Trip</b> and:</p>
+
+  <ol class="steps">
+    <li><b>A trip record is created</b><span>Linking the store name to today's date.</span></li>
+    <li><b>Every cart item becomes a history entry</b><span>Permanent, searchable, exportable.</span></li>
+    <li><b>The cart is cleared</b><span>Ready for the next shop.</span></li>
+    <li><b>Checked reminders are deleted</b><span>Items you ticked off during the trip are removed from Shopping Reminder automatically.</span></li>
+    <li><b>You see a trip summary</b><span>A modal pops up showing today's total vs your typical spend at this store, with a delta chip. Tap to dismiss.</span></li>
+  </ol>
+
+  <div class="note green">
+    <b>New: Post-trip summary</b>
+    The summary modal tells you whether this trip was higher, lower, or about the same as your average for that store — useful for catching unusually expensive visits while they're still fresh in mind.
+  </div>
+
+  <!-- ─────────── REMINDERS ─────────── -->
+  <h2 id="reminders"><span class="num">07</span>Shopping reminders</h2>
+  <p class="h2sub">Your "buy next time" list. Grouped by store.</p>
+
+  <p>The Shopping Reminder section lives between Cart and Spending Insights. Tap the <b>+ button</b> on the right of its heading to add items. A modal appears with:</p>
+
+  <ul>
+    <li>A search bar across all items you've ever bought</li>
+    <li>A list you can tap-select (checkboxes appear)</li>
+    <li>A manual-entry field at the bottom for anything new</li>
+  </ul>
+
+  <p>Selected items are added to your Reminder. Easy Cart remembers the last price and the last store for each, so you can plan your route — items are <b>automatically grouped by store</b> in the section.</p>
+
+  <h3>Working through the list in-store</h3>
+  <p>Each reminder row has a checkbox. Tap it once you've put the item in your physical cart — the row turns green with strikethrough. <b>This is only for tracking. You still need to scan or manually add the item to your Easy Cart so the price warning works.</b></p>
+
+  <h3>Cleanup is automatic</h3>
+  <p>When you tap <b>Done</b> at checkout, all checked reminders are deleted. Unchecked reminders stay for next time.</p>
+
+  <!-- ─────────── RESTOCK ─────────── -->
+  <h2 id="restock"><span class="num">08</span>Restock reminders</h2>
+  <p class="h2sub">Get a nudge before you run out.</p>
+
+  <p>Some items have a natural cadence — milk every 7 days, coffee beans every 21, vitamins every 30. Easy Cart watches your purchase history and predicts when you'll next need each item.</p>
+
+  <h3>Setting one up</h3>
+  <p>In your <b>History</b> section, tap the <b>bell icon</b> on any item row. A modal opens with:</p>
+
+  <ul>
+    <li>A <b>pattern badge</b> showing the cadence Easy Cart detected (e.g. <span class="pill gold">You buy this every ~7d</span>)</li>
+    <li>Preset buttons: <b>3d · 7d · 14d · 30d</b></li>
+    <li>A free-text field if you want a custom interval</li>
+  </ul>
+
+  <p>Tap <b>Set Reminder</b>. Easy Cart schedules a <b>local notification</b> for that future date.</p>
+
+  <h3>When the date arrives</h3>
+  <p>You get a notification. The item also appears in your <b>Shopping Reminder</b> section under "Upcoming Restocks" with a colored badge:</p>
+
+  <ul>
+    <li><span class="pill">in 5 days</span> · approaching</li>
+    <li><span class="pill gold">in 2 days</span> · urgent</li>
+    <li><span class="pill red">Overdue</span> · the predicted date has passed</li>
+  </ul>
+
+  <h3>Acting on a restock reminder</h3>
+  <p>Each restock row has a paper-plane icon — tap it to add the item directly to your cart (price warning applies). Or hit the trash icon to dismiss the reminder.</p>
+
+  <!-- ─────────── INSIGHTS ─────────── -->
+  <h2 id="insights"><span class="num">09</span>Spending insights</h2>
+  <p class="h2sub">Where your grocery money actually goes — told as a story, not a wall of numbers.</p>
+
+  <p>Tap the <b>Spending Insights</b> heading to expand. You'll see these blocks, top-to-bottom:</p>
+
+  <h3>1. Hero number + trend chart</h3>
+  <p>A big serif total (e.g. <b>$268.40</b>) with a delta chip showing how it compares to your average for that period (<span class="pill green">↓ 8%</span> means you're spending less). Below it, a 6-bar trend chart with the current period highlighted. Toggle <b>Week / Month / Year</b> to change the timeframe.</p>
+
+  <h3>2. Quiet observation</h3>
+  <p>One specific, actionable sentence — only shown when Easy Cart has enough data to make a real recommendation. For example:</p>
+
+  <div class="note">
+    <i>"Your trips at Walmart average $54 — at Aldi you average $31. Shifting some shopping could save about $46/month."</i>
+  </div>
+
+  <h3>3. Category breakdown</h3>
+  <p>A donut chart showing how your spend splits across Produce, Dairy, Meat, Pantry, Bakery, Snacks, Household, and General. Each slice is labelled with its percentage. Period follows the Week / Month / Year toggle above.</p>
+
+  <h3>4. Quick-stats grid</h3>
+  <table>
+    <tbody>
+      <tr><td><b>Trips this month</b></td><td>With a delta vs. last month</td></tr>
+      <tr><td><b>Avg trip cost</b></td><td>Across all trips you've saved</td></tr>
+      <tr><td><b>Most loyal to</b></td><td>The store you visit most, with visit count</td></tr>
+      <tr><td><b>Best deal store</b></td><td>The store with the lowest average per-trip total</td></tr>
+      <tr><td><b>Most bought item</b></td><td>What you buy most frequently</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5. Store reports</h3>
+  <p>A per-store breakdown of total spend, trip count, and average per trip. Useful for spotting which stores actually save you money once you've shopped at both a few times.</p>
+
+  <h3>6. Recent trips list</h3>
+  <p>Your most recent shopping trips with store, date, total, and item count.</p>
+
+  <!-- ─────────── HISTORY ─────────── -->
+  <h2 id="history"><span class="num">10</span>History, search & price chart</h2>
+  <p class="h2sub">Everything you've ever bought, searchable, with a price chart for every item.</p>
+
+  <p>The History section shows your purchases newest-first. Each row tells you the item, quantity, unit, price, date, and store. Four touch targets:</p>
+
+  <ul>
+    <li><b>Tap the row itself</b> — opens a <b>Price History modal</b> showing a chart of how this item's price has changed over time, plus a list of every past purchase.</li>
+    <li><b>Bell</b> — set a restock reminder for this item</li>
+    <li><b>Pencil</b> — edit the entry (useful for fixing wrong scans)</li>
+    <li><b>Trash</b> — delete this single purchase</li>
+  </ul>
+
+  <div class="note green">
+    <b>New: Tap a row to see the price chart</b>
+    Watch how a single item's price has trended across stores over months. Great for spotting inflation on your own basket or finding the best store for a specific item.
+  </div>
+
+  <h3>Search</h3>
+  <p>When History is expanded, a search bar appears at the top. Type any part of an item name or store name — results filter as you type. Tap the X to reset.</p>
+
+  <h3>Load more</h3>
+  <p>History loads 50 entries at a time. Scroll to the bottom and tap <b>Load more</b> to fetch the next page.</p>
+
+  <!-- ─────────── EXPORT ─────────── -->
+  <h2 id="export"><span class="num">11</span>CSV export</h2>
+  <p class="h2sub">Take your data anywhere.</p>
+
+  <p>In the History section header, tap the <b>CSV</b> button. Easy Cart writes a file named <code>purchase_history_2026-05-24.csv</code> with columns:</p>
+
+  <p><code>Date, Item, Quantity, Unit, Total Price, Price/Unit, Store</code></p>
+
+  <p>Then it opens your system share sheet so you can:</p>
+
+  <ul>
+    <li>Save to Files / Drive / Dropbox</li>
+    <li>Email it to yourself</li>
+    <li>Open it in Numbers / Excel / Google Sheets</li>
+    <li>Send to a budgeting app</li>
+  </ul>
+
+  <div class="note">
+    <b>Per-unit price is calculated for you</b>
+    The <code>Price/Unit</code> column makes spreadsheet analysis easier — sort by it to find your best deals on any single item.
+  </div>
+
+  <!-- ─────────── SYNC ─────────── -->
+  <h2 id="sync"><span class="num">12</span>WiFi sync</h2>
+  <p class="h2sub">Copy your data between two phones on the same network.</p>
+
+  <p>Tap the <b>cloud icon</b> in the top right corner. A modal lets you pick a mode:</p>
+
+  <h3>Host (send) mode</h3>
+  <p>Your phone becomes a temporary server. Tap <b>Start Server</b>, then check your phone's WiFi settings to find your IP address (something like <code>192.168.1.42</code>). Share that IP with the second phone — read it aloud, text it, whatever.</p>
+
+  <h3>Join (receive) mode</h3>
+  <p>On the second phone, switch to <b>Join</b>, type the host's IP address, and tap <b>Connect & Sync</b>. The two phones sync over your local WiFi. A live log shows progress.</p>
+
+  <div class="note warn">
+    <b>Privacy reminder</b>
+    Sync only works between phones on the <b>same local network</b>. No data leaves your home WiFi. There is no Easy Cart server in the cloud.
+  </div>
+
+  <!-- ─────────── SHARE ─────────── -->
+  <h2 id="share"><span class="num">13</span>Family sharing & deep-link import</h2>
+  <p class="h2sub">Send your shopping reminder to whoever's doing the run — and they can import it with one tap.</p>
+
+  <p>In the Shopping Reminder section, tap the <b>share icon</b> in the header. Easy Cart opens your phone's share sheet with a clean message:</p>
+
+  <pre>Shopping Reminder:
+• Eggs (organic, dozen)
+• Olive Oil 1L
+• Sourdough Loaf
+
+Import into EasyCart:
+easycart://import?items=Eggs%20(organic%2C%20dozen),Olive%20Oil%201L,Sourdough%20Loaf</pre>
+
+  <p>Pick WhatsApp / Messages / Mail / whatever. The recipient sees the items as plain text — <b>and</b>, if they also have Easy Cart installed, the special <code>easycart://</code> link is tappable. Tapping it opens their app with a confirmation prompt to import your list.</p>
+
+  <div class="note green">
+    <b>Deep-link import flow</b>
+    When the recipient taps the link, Easy Cart shows a confirmation modal with each item listed. They tap <b>Add to Shopping Reminder</b> — duplicates are skipped silently, and the Reminder section auto-expands so they can see what was added.
+  </div>
+
+  <!-- ─────────── TIPS ─────────── -->
+  <h2 id="tips"><span class="num">14</span>Tips & shortcuts</h2>
+  <p class="h2sub">Little habits that make Easy Cart feel effortless.</p>
+
+  <div class="tipGrid">
+    <div class="tipCard">
+      <div class="label">Tip</div>
+      <h4>Type before you scan.</h4>
+      <p>If you've bought the item before, typing two letters of its name in the Add Item modal will surface it with all fields pre-filled. Often faster than scanning.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Tip</div>
+      <h4>Group restock dates.</h4>
+      <p>Set restock reminders for similar items (e.g. all your dry goods) on the same day, so you batch them into one trip.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Tip</div>
+      <h4>Use Fix Names later.</h4>
+      <p>If you're in a basement aisle with no signal, just scan everything. Tap <b>Fix Names</b> when you get reception. Saves checkout time.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Tip</div>
+      <h4>Tap the row, not the buttons.</h4>
+      <p>In History, tapping anywhere on the item text opens its price chart. Tap the icons on the right only when you want to edit or set a reminder.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Tip</div>
+      <h4>Switch periods.</h4>
+      <p>The Week / Month / Year toggle in Spending Insights changes the chart and the category donut. Use Year to see seasonal patterns; Week to react to recent overspend.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Tip</div>
+      <h4>Search by store.</h4>
+      <p>Typing "Costco" in History search shows just your Costco purchases — a fast way to verify if a "deal" was actually a deal.</p>
+    </div>
+  </div>
+
+  <!-- ─────────── PRIVACY ─────────── -->
+  <h2 id="privacy"><span class="num">15</span>Privacy & your data</h2>
+  <p class="h2sub">Everything stays on your phone unless you decide otherwise.</p>
+
+  <p>Easy Cart is built on three principles:</p>
+
+  <table>
+    <tbody>
+      <tr><td class="icon-cell">🔒</td><td><b>No account.</b> No sign-up, no email, no password. You open the app and use it.</td></tr>
+      <tr><td class="icon-cell">📵</td><td><b>No cloud.</b> Your purchase history, prices, store list — all stored locally in a SQLite database on your phone. Easy Cart has no servers.</td></tr>
+      <tr><td class="icon-cell">📡</td><td><b>No tracking.</b> No analytics, no advertising IDs, no third-party SDKs.</td></tr>
+    </tbody>
+  </table>
+
+  <p>The only network calls Easy Cart makes are:</p>
+
+  <ul>
+    <li><b>Open Food Facts API</b> — only when you scan an unknown barcode. The API receives only the barcode number. (Skipped entirely if you're offline.)</li>
+    <li><b>WiFi Sync</b> — only over your local network, only when you start it, only to a phone you've personally connected to.</li>
+    <li><b>System share sheet</b> — whatever you choose (Messages, Mail, etc.). Easy Cart just hands the text off.</li>
+  </ul>
+
+  <p>To wipe everything: uninstall the app. There's no "backup to cloud" that needs clearing — there was no cloud copy to begin with.</p>
+
+  <!-- ─────────── TROUBLESHOOTING ─────────── -->
+  <h2 id="troubleshoot"><span class="num">16</span>Troubleshooting</h2>
+  <p class="h2sub">Quick fixes for the most common snags.</p>
+
+  <table>
+    <thead><tr><th style="width:34%">Problem</th><th>Try this</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Scanner shows a black screen</b></td>
+        <td>Camera permission was denied. Open phone Settings → AmuOvi Easy Cart → Permissions → Camera → Allow.</td>
+      </tr>
+      <tr>
+        <td><b>Item name shows as a barcode number</b></td>
+        <td>It's a new product not in your history and you were offline. Either type the name in the Add Item modal, or tap <b>Fix Names</b> in the cart header once you're back online.</td>
+      </tr>
+      <tr>
+        <td><b>Price warning didn't appear</b></td>
+        <td>The cheapest price compared is normalized per unit. If you bought milk in different unit groups before (e.g. <code>L</code> vs <code>qty</code>), they don't compare. Edit historical entries to match units.</td>
+      </tr>
+      <tr>
+        <td><b>Restock notification didn't arrive</b></td>
+        <td>Notification permission may be off. Phone Settings → AmuOvi Easy Cart → Notifications → Allow. Some Android battery savers also delay notifications — whitelist the app.</td>
+      </tr>
+      <tr>
+        <td><b>WiFi sync won't connect</b></td>
+        <td>Both phones must be on the same network. Public WiFi often blocks phone-to-phone traffic — try your home network. Some Android phones also need "Local network" permission granted.</td>
+      </tr>
+      <tr>
+        <td><b>CSV export does nothing</b></td>
+        <td>No purchase history yet — there's nothing to export. Save at least one trip first.</td>
+      </tr>
+      <tr>
+        <td><b>Deep-link import shows nothing</b></td>
+        <td>The sender used an old format. Ask them to re-share from the current version, or paste the text and add items manually.</td>
+      </tr>
+      <tr>
+        <td><b>Category donut is missing</b></td>
+        <td>You need at least a few categorized purchases. Older items without categories show as "General" — edit them to add proper categories.</td>
+      </tr>
+      <tr>
+        <td><b>"Quiet observation" never shows up</b></td>
+        <td>Easy Cart only surfaces an observation when there's a meaningful difference between stores (>$5/trip and >$10/month projected savings). Shop at two stores a few times each and it'll appear.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note danger">
+    <b>Still stuck?</b>
+    Email the app maintainer with a brief description of what you tried. Include your phone OS version (iOS 17 / Android 14, etc.) and which feature is failing.
+  </div>
+
+  <!-- ─────────── FOOTER ─────────── -->
+  <div class="footer">
+    AmuOvi Easy Cart — Grocery shopping made calm.
+  </div>
+
+</div>
+</body>
+</html>
