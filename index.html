@@ -64,6 +64,19 @@
   .app-card .cta{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--primary);text-decoration:none;margin-top:auto;padding-top:18px;border-top:1px dashed var(--line)}
   .app-card .cta svg{width:16px;height:16px;flex-shrink:0}
 
+  /* Coming Soon button */
+  .btn-coming-soon{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:9px 16px;background:var(--surface2);border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:0.3px;cursor:default;user-select:none}
+  .btn-coming-soon svg{width:18px;height:18px;opacity:0.5}
+
+  /* Request Access button */
+  .btn-request{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:9px 16px;background:var(--success);border:none;border-radius:8px;font-size:12px;font-weight:700;color:#fff;letter-spacing:0.3px;text-decoration:none;transition:opacity 0.15s}
+  .btn-request:hover{opacity:0.85}
+  .btn-request svg{width:16px;height:16px}
+
+  /* How it works note */
+  .how-it-works{margin-top:14px;padding:10px 14px;background:var(--primarySoft);border-radius:8px;font-size:12px;color:var(--primary);line-height:1.5}
+  .how-it-works strong{color:var(--primary)}
+
   /* About section */
   .about{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;padding:26px 28px;margin-bottom:60px}
   .about p{margin:0 0 8px;font-size:14.5px;color:var(--ink2);line-height:1.7;max-width:none}
@@ -100,25 +113,29 @@
   <div class="grid">
 
     <!-- Grocery Cart -->
-    <a class="app-card" href="groceryShoppingCart.html">
+    <div class="app-card">
       <div class="app-icon gold">🛒</div>
       <div class="sub">Mobile App</div>
       <h3>AmuOvi Easy Cart</h3>
       <p>A calm, private, offline-first grocery companion. Plan your shop, catch price changes on your own items, and get restock reminders — all without an account or any cloud.</p>
       <div class="tags">
-        <span class="tag-pill gold">iOS &amp; Android</span>
+        <span class="tag-pill gold">Android</span>
         <span class="tag-pill">Offline-first</span>
         <span class="tag-pill">No account</span>
-        <span class="tag-pill green">Private</span>
+        <span class="tag-pill green">Free</span>
       </div>
-      <span class="cta">
+      <a class="cta" href="groceryShoppingCart.html">
         Read guide
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </span>
-    </a>
+      </a>
+      <div class="btn-coming-soon">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76A1.5 1.5 0 0 1 1.5 22.1V1.9A1.5 1.5 0 0 1 3.69.28l18.29 10.1a1.5 1.5 0 0 1 0 2.64L3.69 23.12a1.5 1.5 0 0 1-.51.64z"/></svg>
+        Coming Soon on Google Play
+      </div>
+    </div>
 
     <!-- Community Sports App -->
-    <a class="app-card" href="communitySportsApp.html">
+    <div class="app-card">
       <div class="app-icon green">🏅</div>
       <div class="sub">Web App · Admin &amp; Public</div>
       <h3>Community Sports</h3>
@@ -129,11 +146,18 @@
         <span class="tag-pill gold">Live scores</span>
         <span class="tag-pill">Reports</span>
       </div>
-      <span class="cta">
+      <a class="cta" href="communitySportsApp.html">
         Read guide
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </span>
-    </a>
+      </a>
+      <a class="btn-request" href="https://github.com/geromer/AmuOvi/issues/new?title=Community+Sports+%E2%80%94+Access+Request&body=%23%23+Access+Request%0A%0A**Name+%2F+Organisation**%3A%0A%0A**What+do+you+need**+%28e.g.+cloud+hosting%2C+on-premise%2C+demo%29%3A%0A%0A**Your+contact+email**%3A%0A%0A**Anything+else**%3A%0A" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2h12v9H2z"/><path d="M5 11v3l3-3"/></svg>
+        Request Access
+      </a>
+      <div class="how-it-works">
+        <strong>How it works:</strong> Click "Request Access" to open a short form on GitHub. Fill in your details and submit — the developer will be notified and will get back to you directly.
+      </div>
+    </div>
 
   </div>
 
