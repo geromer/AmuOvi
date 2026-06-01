@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Community Sports App — User Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #E6ECF3;
+    --surface:    #FFFCF1;
+    --surface2:   #EFE6CC;
+    --line:       #C9D3E0;
+    --primary:    #4A6F9D;
+    --primarySoft:#E0E8F3;
+    --accent:     #A07A1A;
+    --accentSoft: #EAD9A8;
+    --ink:        #222127;
+    --ink2:       #6E6A78;
+    --ink3:       #9D9AA8;
+    --warning:    #A0701A;
+    --success:    #3D7F62;
+    --danger:     #9F4538;
+    --serif:      "Cormorant Garamond", Georgia, serif;
+    --sans:       "Manrope", -apple-system, system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
+  .page{max-width:820px;margin:0 auto;padding:60px 32px 100px}
+
+  /* Cover */
+  .cover{padding:60px 0 50px;border-bottom:1px solid var(--line);margin-bottom:50px}
+  .kicker{font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-family:var(--serif);font-style:italic;font-weight:500;font-size:60px;line-height:1;margin:0;letter-spacing:-1px}
+  h1 em{color:var(--primary);font-style:italic;font-weight:500}
+  .tag{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink2);margin-top:14px}
+  .meta{margin-top:32px;font-size:12px;color:var(--ink3);letter-spacing:0.5px}
+
+  /* Headings */
+  h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:34px;color:var(--ink);letter-spacing:-0.5px;margin:64px 0 6px;line-height:1.1}
+  h2 .num{display:inline-block;font-style:normal;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--accent);background:var(--surface);padding:4px 10px;border-radius:4px;margin-right:14px;vertical-align:middle;border:1px solid var(--accentSoft)}
+  h3{font-family:var(--sans);font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-0.1px;margin:34px 0 8px}
+  .h2sub{color:var(--ink2);font-size:15px;margin:0 0 20px;max-width:65ch}
+
+  p{margin:10px 0;color:#2a2a2a;font-size:15px;max-width:68ch}
+  b,strong{color:var(--ink);font-weight:700}
+  a{color:var(--primary)}
+  code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;background:var(--surface);padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--ink)}
+  ul{margin:10px 0;padding-left:22px;color:#2a2a2a;font-size:15px}
+  ul li{margin-bottom:5px;max-width:68ch}
+
+  /* Step list */
+  .steps{margin:18px 0 8px;padding:0;list-style:none;counter-reset:step}
+  .steps li{counter-increment:step;position:relative;padding:14px 18px 14px 60px;background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:14.5px}
+  .steps li::before{content:counter(step);position:absolute;left:14px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;display:flex;align-items:center;justify-content:center}
+  .steps li b{display:block;font-size:13px;color:var(--ink);margin-bottom:2px}
+  .steps li span{color:var(--ink2);font-size:13.5px}
+
+  /* Callout box */
+  .note{margin:18px 0;padding:14px 18px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--primary);border-radius:10px;font-size:14px;color:var(--ink2)}
+  .note.gold{border-left-color:var(--accent);background:#FFFAEB}
+  .note.warn{border-left-color:var(--warning);background:#FFF6E5}
+  .note.danger{border-left-color:var(--danger);background:#FBEDEB}
+  .note.green{border-left-color:var(--success);background:#EAF4EE}
+  .note b{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;color:var(--ink);margin-bottom:4px}
+
+  /* Feature row */
+  .feat{display:grid;grid-template-columns:90px 1fr;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px dashed var(--line)}
+  .feat:last-child{border-bottom:none}
+  .feat .icon{width:56px;height:56px;border-radius:14px;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:26px}
+  .feat .icon.gold{color:var(--accent)}
+  .feat .icon.green{color:var(--success)}
+  .feat .icon.red{color:var(--danger)}
+  .feat h3{margin:2px 0 4px;font-size:16px}
+  .feat p{font-size:14.5px;margin:6px 0;max-width:none}
+
+  /* Table */
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink2);background:transparent}
+  td b{color:var(--ink)}
+  td code{font-size:12px}
+
+  /* Tip cards */
+  .tipGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media(max-width:640px){.tipGrid{grid-template-columns:1fr}}
+  .tipCard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .tipCard .label{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .tipCard h4{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;margin:0 0 4px;color:var(--ink)}
+  .tipCard p{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.5;max-width:none}
+
+  /* Intro highlight */
+  .intro{margin:30px 0 40px;padding:24px 26px;background:var(--surface);border:1px solid var(--line);border-radius:14px;border-left:5px solid var(--accent)}
+  .intro p{margin:0 0 6px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink);line-height:1.45;max-width:none}
+  .intro p:last-child{margin-bottom:0}
+  .intro p b{font-family:var(--sans);font-style:normal;color:var(--primary);font-weight:700}
+
+  /* Highlights grid */
+  .hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin:24px 0 8px}
+  .hcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+  .hcard .ic{width:36px;height:36px;border-radius:9px;background:var(--primarySoft);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:4px}
+  .hcard.gold .ic{background:var(--accentSoft)}
+  .hcard.green .ic{background:#E1F0E9}
+  .hcard h4{margin:0;font-family:var(--sans);font-weight:700;font-size:14px;color:var(--ink)}
+  .hcard p{margin:0;font-size:12.5px;color:var(--ink2);line-height:1.5;max-width:none}
+
+  /* Pill */
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:var(--primarySoft);color:var(--primary);font-size:12px;font-weight:700;border-radius:999px}
+  .pill.gold{background:var(--accentSoft);color:var(--accent)}
+  .pill.green{background:#E1F0E9;color:var(--success)}
+  .pill.red{background:#FBEDEB;color:var(--danger)}
+
+  /* Role badge */
+  .role{display:inline-flex;align-items:center;padding:2px 9px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase}
+  .role.admin{background:#FBEDEB;color:var(--danger)}
+  .role.public{background:#E1F0E9;color:var(--success)}
+
+  /* TOC */
+  .toc{margin:30px 0 0;padding:18px 22px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+  .toc .label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .toc ol{margin:0;padding:0;list-style:none;columns:2;column-gap:24px}
+  .toc ol li{padding:5px 0;font-size:14px;color:var(--ink2);break-inside:avoid}
+  .toc ol li a{text-decoration:none;color:var(--ink)}
+  .toc ol li a:hover{color:var(--primary)}
+  .toc ol li::before{content:'·';color:var(--accent);margin-right:8px;font-weight:700}
+
+  /* Back link */
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink2);text-decoration:none;margin-bottom:32px}
+  .back:hover{color:var(--primary)}
+  .back svg{width:14px;height:14px}
+
+  /* Footer */
+  .footer{margin-top:80px;padding-top:30px;border-top:1px solid var(--line);font-size:13px;color:var(--ink3);text-align:center;font-family:var(--serif);font-style:italic}
+
+  @media print{
+    html,body{background:#fff}
+    .page{padding:30px}
+    h2{page-break-after:avoid}
+    .feat,.steps li,.note{page-break-inside:avoid}
+    .toc,.back{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8H3M7 12l-4-4 4-4"/></svg>
+    All guides
+  </a>
+
+  <!-- Cover -->
+  <header class="cover">
+    <div class="kicker">User Guide · v1.0 · June 2026</div>
+    <h1>Community <em>Sports</em></h1>
+    <div class="tag">Run your sporting event from start to finish.</div>
+    <div class="meta">Read time ~15 minutes · For admins and public users</div>
+  </header>
+
+  <div class="intro">
+    <p><b>Community Sports</b> is a web platform built to manage community sporting events — from athlete registration and team formation through to live results, leaderboards, and printed reports.</p>
+    <p>It has two types of users: the <b>public</b> (athletes and spectators who view events and scores) and <b>admins</b> (organizers who manage everything).</p>
+  </div>
+
+  <h3 style="margin-top:0">At a glance</h3>
+  <div class="hgrid">
+    <div class="hcard">
+      <div class="ic">🗓️</div>
+      <h4>Event management</h4>
+      <p>Create Track, Field, and Team Game events with age-group schedules and real-time status tracking.</p>
+    </div>
+    <div class="hcard gold">
+      <div class="ic">🏃</div>
+      <h4>Athlete profiles</h4>
+      <p>Register athletes with auto-assigned bib numbers, age group classification, and team assignment.</p>
+    </div>
+    <div class="hcard green">
+      <div class="ic">🏆</div>
+      <h4>Live leaderboard</h4>
+      <p>Points calculated automatically after every result entry. Live scores pushed via WebSocket.</p>
+    </div>
+    <div class="hcard">
+      <div class="ic">📄</div>
+      <h4>Reports</h4>
+      <p>Marshalling sheets, heat sheets, team game entry reports, standings, roster, and more — all printable.</p>
+    </div>
+    <div class="hcard gold">
+      <div class="ic">⚙️</div>
+      <h4>Sport config</h4>
+      <p>Configure points per position for each sport type, age calculation date, and registration settings.</p>
+    </div>
+    <div class="hcard green">
+      <div class="ic">✅</div>
+      <h4>Data validation</h4>
+      <p>Audit report detects overlapping age groups, unassigned athletes, missing results, and leaderboard mismatches.</p>
+    </div>
+  </div>
+
+  <nav class="toc">
+    <div class="label">In this guide</div>
+    <ol>
+      <li><a href="#access">Accessing the app</a></li>
+      <li><a href="#public">Public pages</a></li>
+      <li><a href="#login">Logging in as admin</a></li>
+      <li><a href="#agegroups">Age groups</a></li>
+      <li><a href="#teams">Teams</a></li>
+      <li><a href="#athletes">Athletes</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#schedules">Schedules (Track &amp; Field)</a></li>
+      <li><a href="#teamgame">Team Game events</a></li>
+      <li><a href="#results">Recording results</a></li>
+      <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#reports">Reports</a></li>
+      <li><a href="#sportconfig">Sport config</a></li>
+      <li><a href="#validation">Data validation</a></li>
+      <li><a href="#users">User management</a></li>
+    </ol>
+  </nav>
+
+  <!-- ─── 01 ACCESSING ─── -->
+  <h2 id="access"><span class="num">01</span>Accessing the app</h2>
+  <p class="h2sub">The app is a web application — open it in any modern browser.</p>
+
+  <p>Navigate to the app URL provided by your event organizer. No installation is required. The app works on desktop and mobile browsers.</p>
+
+  <table>
+    <thead><tr><th>User type</th><th>What they can do</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="role public">Public</span></td>
+        <td>View events, schedules, results, and the leaderboard — no login required.</td>
+      </tr>
+      <tr>
+        <td><span class="role admin">Admin</span></td>
+        <td>Manage all data: athletes, teams, events, results, reports, and configuration. Requires login.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ─── 02 PUBLIC ─── -->
+  <h2 id="public"><span class="num">02</span>Public pages</h2>
+  <p class="h2sub">No login needed. Everything a spectator or athlete needs to follow the action.</p>
+
+  <div class="feat">
+    <div class="icon green">🗓️</div>
+    <div>
+      <h3>Events</h3>
+      <p>Browse all events — Track, Field, and Team Game. Each event card shows the sport type, category, and current status (<span class="pill">Upcoming</span> <span class="pill gold">Ongoing</span> <span class="pill green">Completed</span>). Tap an event to see its schedule and results.</p>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="icon">⏱️</div>
+    <div>
+      <h3>Event schedules</h3>
+      <p>Each Track or Field event has age-group schedules showing start time, end time, and location. Team Game events have a single schedule. Status updates automatically as results are entered.</p>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="icon gold">📊</div>
+    <div>
+      <h3>Results</h3>
+      <p>View recorded performances per event — athlete name, bib number, measurement, position, and points awarded. Team game results show team name, squad label, position, and points.</p>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="icon green">🏆</div>
+    <div>
+      <h3>Leaderboard</h3>
+      <p>Two views: <b>per-event</b> (which team earned what points in a specific event) and <b>overall</b> (cumulative points across all events, ranking teams from first to last).</p>
+    </div>
+  </div>
+
+  <!-- ─── 03 LOGIN ─── -->
+  <h2 id="login"><span class="num">03</span>Logging in as admin</h2>
+  <p class="h2sub">Admins log in from the Login page to access the management interface.</p>
+
+  <ol class="steps">
+    <li><b>Go to the Login page</b><span>Click the Login link from any page, or navigate to <code>/login</code>.</span></li>
+    <li><b>Enter your email and password</b><span>These are set by the system administrator. Contact your organizer if you don't have credentials.</span></li>
+    <li><b>Click Sign In</b><span>You are redirected to the admin dashboard with access to all management pages.</span></li>
+  </ol>
+
+  <div class="note gold">
+    <b>Public registration</b>
+    If registration is enabled (controlled by an admin in Sport Config), a "Create account" link appears on the login page. Athletes can self-register with basic details. Admins can disable this at any time.
+  </div>
+
+  <div class="note">
+    <b>Session length</b>
+    Admin sessions expire after 24 hours. You will be asked to log in again after that.
+  </div>
+
+  <!-- ─── 04 AGE GROUPS ─── -->
+  <h2 id="agegroups"><span class="num">04</span>Age groups</h2>
+  <p class="h2sub">Age groups define the competition categories athletes are placed into.</p>
+
+  <p>Go to <b>Age Groups</b> in the admin sidebar. Each age group has:</p>
+
+  <table>
+    <thead><tr><th>Field</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><b>Label</b></td><td>Display name — e.g. <code>U14 Boys</code>, <code>Open Women</code></td></tr>
+      <tr><td><b>Min age / Max age</b></td><td>Decimal ages (e.g. <code>12.0</code>–<code>14.0</code>). Range is exclusive lower bound, inclusive upper bound: an athlete aged exactly 12.0 does NOT qualify; 14.0 does.</td></tr>
+      <tr><td><b>Gender</b></td><td>MALE, FEMALE, or MIXED</td></tr>
+      <tr><td><b>Bib range start / end</b></td><td>Optional. If set, athlete bib numbers are assigned sequentially within this range (e.g. <code>001</code>–<code>025</code>). Once exhausted, overflow uses suffix A (<code>026A</code>). If not set, the fallback format <code>ATH-XXXX</code> is used.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Creating an age group</h3>
+  <ol class="steps">
+    <li><b>Click New Age Group</b><span>The create form opens in the panel on the right.</span></li>
+    <li><b>Fill in the label, min age, max age, and gender</b><span>Optionally set a bib range if you want sequential bib numbers for this group.</span></li>
+    <li><b>Click Save</b><span>The age group appears in the list immediately.</span></li>
+  </ol>
+
+  <div class="note warn">
+    <b>Overlapping age ranges</b>
+    Make sure age group ranges do not overlap — the Data Validation report will flag overlaps. Overlaps cause an athlete to match multiple groups, which is not allowed.
+  </div>
+
+  <div class="note danger">
+    <b>Deleting age groups</b>
+    An age group cannot be deleted if any athlete is assigned to it, or if any event schedule references it. Reassign or remove those first.
+  </div>
+
+  <!-- ─── 05 TEAMS ─── -->
+  <h2 id="teams"><span class="num">05</span>Teams</h2>
+  <p class="h2sub">Teams group athletes together and earn collective leaderboard points.</p>
+
+  <p>Go to <b>Teams</b> in the admin sidebar. Each team has a <b>name</b>, an optional <b>abbreviation</b>, and a <b>payment status</b> (Pending / Paid / Waived).</p>
+
+  <h3>Creating a team</h3>
+  <ol class="steps">
+    <li><b>Click New Team</b><span>A small create form opens at the top of the list.</span></li>
+    <li><b>Enter the team name and abbreviation</b><span>Abbreviation is used in compact table views.</span></li>
+    <li><b>Click Create</b><span>The team is saved and appears in the list.</span></li>
+  </ol>
+
+  <div class="note">
+    <b>Athletes are assigned to teams separately</b>
+    After creating a team, go to the Athletes page to assign individual athletes to it. A team can have any number of athletes; athletes can only belong to one team at a time.
+  </div>
+
+  <div class="note danger">
+    <b>Deleting teams</b>
+    A team cannot be deleted if any athlete is a member of it, or if any team entry (squad) exists for it in an event. Remove those associations first.
+  </div>
+
+  <!-- ─── 06 ATHLETES ─── -->
+  <h2 id="athletes"><span class="num">06</span>Athletes</h2>
+  <p class="h2sub">Athletes are the individual competitors. Each athlete is linked to a user account and an age group.</p>
+
+  <p>Go to <b>Athletes</b> in the admin sidebar. The list shows every athlete with their bib number, age group, team, and payment status.</p>
+
+  <h3>Creating an athlete</h3>
+  <ol class="steps">
+    <li><b>Click New Athlete</b><span>The create form expands at the top of the list.</span></li>
+    <li><b>Enter personal details</b><span>Full name, email, date of birth, and phone number. An athlete account is created automatically.</span></li>
+    <li><b>Select age group and team</b><span>Age group determines which events the athlete is eligible for. A bib number is assigned automatically based on the age group's bib range.</span></li>
+    <li><b>Set payment status</b><span>Pending, Paid, or Waived.</span></li>
+    <li><b>Click Save</b><span>The athlete appears in the list with their assigned bib number.</span></li>
+  </ol>
+
+  <div class="note">
+    <b>Bib numbers are permanent</b>
+    A bib number is assigned once at creation and never changes — even if the athlete's age group is later updated. This is intentional so printed materials stay accurate.
+  </div>
+
+  <div class="note gold">
+    <b>Age calculation</b>
+    Age is calculated as a decimal (e.g. 14.9) using the <b>Age Calculation Date</b> set in Sport Config — not today's date. The formula is days elapsed ÷ 365.25, floored to 1 decimal place. This date is set once before the event and used consistently for all athletes.
+  </div>
+
+  <h3>Editing an athlete</h3>
+  <p>Click the pencil icon on any athlete row. The edit form opens inline. You can update any field except the bib number. Click Save to confirm.</p>
+
+  <div class="note danger">
+    <b>Deleting athletes</b>
+    An athlete cannot be deleted if they have any recorded result with a position or points. Remove their results first. Deleting an athlete also deletes their linked login account.
+  </div>
+
+  <!-- ─── 07 EVENTS ─── -->
+  <h2 id="events"><span class="num">07</span>Events</h2>
+  <p class="h2sub">Events are the competitions. Each event has a sport type that determines how it is scheduled and how results are recorded.</p>
+
+  <p>Go to <b>Events</b> in the admin sidebar.</p>
+
+  <table>
+    <thead><tr><th>Sport type</th><th>Description</th><th>Results</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="pill">TRACK</span></td>
+        <td>Running events — 100m, 200m, 400m, etc.</td>
+        <td>Individual athlete performance per age group</td>
+      </tr>
+      <tr>
+        <td><span class="pill gold">FIELD</span></td>
+        <td>Field events — long jump, shot put, discus, etc.</td>
+        <td>Individual athlete performance per age group</td>
+      </tr>
+      <tr>
+        <td><span class="pill green">TEAM GAME</span></td>
+        <td>Team-vs-team events — relay, tug of war, etc.</td>
+        <td>Team squad results (no age group on entry)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Creating an event</h3>
+  <ol class="steps">
+    <li><b>Click New Event</b><span>The create form opens in the panel.</span></li>
+    <li><b>Enter a title</b><span>E.g. "100m Sprint", "Long Jump", "Relay Race".</span></li>
+    <li><b>Select the sport type</b><span>TRACK, FIELD, or TEAM_GAME. This cannot be changed after creation.</span></li>
+    <li><b>Enter the category</b><span>A free-text label for grouping — e.g. "Sprint", "Throws", "Finals".</span></li>
+    <li><b>Click Save</b><span>The event is created. Next, set up its schedule.</span></li>
+  </ol>
+
+  <div class="note danger">
+    <b>Deleting events</b>
+    An event cannot be deleted if it has any age-group schedules assigned, or any team entries (squads). Remove those first.
+  </div>
+
+  <!-- ─── 08 SCHEDULES ─── -->
+  <h2 id="schedules"><span class="num">08</span>Schedules — Track &amp; Field</h2>
+  <p class="h2sub">For TRACK and FIELD events, you assign one or more age groups to the event, each with its own timing and location.</p>
+
+  <p>Click on a TRACK or FIELD event in the Events list to open its detail page. The <b>Schedules</b> panel shows the age groups assigned so far.</p>
+
+  <h3>Assigning an age group</h3>
+  <ol class="steps">
+    <li><b>Click Add Schedule</b><span>The schedule form opens.</span></li>
+    <li><b>Select an age group</b><span>Each age group can only be assigned once per event.</span></li>
+    <li><b>Set start time, end time, and location</b><span>These appear on the public event page and on printed call sheets.</span></li>
+    <li><b>Click Save</b><span>The schedule is added. Status starts as UPCOMING and updates automatically when results are recorded.</span></li>
+  </ol>
+
+  <div class="note">
+    <b>Status is automatic for Track &amp; Field</b>
+    When the first result is recorded for an event + age group, the schedule status becomes <span class="pill gold">ONGOING</span>. When results are cleared (reset), it reverts to <span class="pill">UPCOMING</span>. Status is set to <span class="pill green">COMPLETED</span> when a full result set is recorded. You can also manually override status from the schedule row.
+  </div>
+
+  <div class="note danger">
+    <b>Deleting a schedule</b>
+    A schedule cannot be deleted if any athlete has a recorded result for that event + age group combination. Clear results first via the Results page.
+  </div>
+
+  <!-- ─── 09 TEAM GAME ─── -->
+  <h2 id="teamgame"><span class="num">09</span>Team Game events</h2>
+  <p class="h2sub">Team Game events work differently — teams enter as squads, and there are no individual age-group schedules.</p>
+
+  <p>Click on a TEAM_GAME event in the Events list. You will see two panels:</p>
+
+  <div class="feat">
+    <div class="icon">📅</div>
+    <div>
+      <h3>Event Schedule panel</h3>
+      <p>A single schedule for the whole event — start time, end time, and location. Create this first by clicking <b>Add Schedule</b>. There is only one schedule per Team Game event.</p>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="icon green">👥</div>
+    <div>
+      <h3>Team Entries panel</h3>
+      <p>Each team competing in the event needs a <b>team entry</b> (squad). After adding a team entry, you assign individual athletes to that squad. This is where you build the roster for each team game event.</p>
+    </div>
+  </div>
+
+  <h3>Setting up a Team Game event — step by step</h3>
+  <ol class="steps">
+    <li><b>Create the event schedule</b><span>In the Event Schedule panel, click Add Schedule and set the timing and location.</span></li>
+    <li><b>Add team entries</b><span>In the Team Entries panel, click Add Team Entry. Select a team and enter a squad label (e.g. "Squad A"). Repeat for each competing team.</span></li>
+    <li><b>Assign athletes to each squad</b><span>Click the squad card to expand it, then click Add Athlete. A search modal lets you find athletes by name. Add as many as needed for that squad.</span></li>
+    <li><b>Record results when the event runs</b><span>See section 10 — Results.</span></li>
+  </ol>
+
+  <div class="note">
+    <b>Age groups and Team Game</b>
+    Team Game events do not have per-age-group schedules. An athlete's age group comes from their athlete profile, but it does not affect which squad they can join. Squad assignment is managed entirely from the Event page.
+  </div>
+
+  <div class="note danger">
+    <b>Deleting a team entry</b>
+    A team entry (squad) cannot be deleted after a result (position) has been recorded for it. The delete button is also disabled in the UI once a position exists.
+  </div>
+
+  <!-- ─── 10 RESULTS ─── -->
+  <h2 id="results"><span class="num">10</span>Recording results</h2>
+  <p class="h2sub">Results are entered from the Results page in the admin sidebar.</p>
+
+  <h3>Track &amp; Field results</h3>
+  <p>Results are recorded per athlete, per event, per age group.</p>
+
+  <ol class="steps">
+    <li><b>Go to Results → Athlete Results</b><span>Select the event and age group from the dropdowns.</span></li>
+    <li><b>Enter performance for each athlete</b><span>Record the measurement (e.g. <code>12.34</code> seconds, <code>6.80</code> metres), unit, and position.</span></li>
+    <li><b>Click Save</b><span>Points are calculated automatically from the position using the Sport Config points table for that sport type. The leaderboard is rebuilt immediately.</span></li>
+  </ol>
+
+  <div class="note gold">
+    <b>Tied positions</b>
+    If two athletes share a position (e.g. both 2nd), the app averages the points for positions 2 and 3, then applies the floor — both athletes receive the same rounded-down average. Position 3 is skipped.
+  </div>
+
+  <div class="note">
+    <b>Clearing a result</b>
+    To remove an athlete's result, open their entry in the Results page and click Clear. If no athlete in that event + age group has any remaining result, the schedule status reverts to UPCOMING.
+  </div>
+
+  <h3>Team Game results</h3>
+  <p>Results are recorded per team entry (squad), not per individual athlete.</p>
+
+  <ol class="steps">
+    <li><b>Go to Results → Team Results</b><span>Select the Team Game event from the dropdown. All team entries for that event appear.</span></li>
+    <li><b>Assign a position to each team entry</b><span>Enter the finishing position for each squad.</span></li>
+    <li><b>Click Save</b><span>Points are calculated from the position using the Team Game points table in Sport Config. The leaderboard is rebuilt.</span></li>
+  </ol>
+
+  <div class="note">
+    <b>Schedule status for Team Games</b>
+    Status updates automatically: if some squads have positions recorded and others don't, the schedule becomes ONGOING. Once all squads have a position, it becomes COMPLETED. If all positions are cleared, it reverts to UPCOMING.
+  </div>
+
+  <!-- ─── 11 LEADERBOARD ─── -->
+  <h2 id="leaderboard"><span class="num">11</span>Leaderboard</h2>
+  <p class="h2sub">Points accumulate in real time as results are recorded.</p>
+
+  <p>The leaderboard is visible to everyone — no login required. There are two views:</p>
+
+  <div class="feat">
+    <div class="icon gold">📊</div>
+    <div>
+      <h3>Per-event leaderboard</h3>
+      <p>Shows each team's points earned in a single event — sum of all athlete performances (Track/Field) or team entry results (Team Game) for that event. Accessible from the event detail page.</p>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="icon green">🏆</div>
+    <div>
+      <h3>Overall leaderboard</h3>
+      <p>Ranks all teams by total points across every event. This is the main competition standings. Updates live after every result save.</p>
+    </div>
+  </div>
+
+  <div class="note green">
+    <b>Live updates</b>
+    The leaderboard is pushed to all connected browsers in real time via WebSocket when results are recorded. Spectators watching on their phones see the update without refreshing.
+  </div>
+
+  <!-- ─── 12 REPORTS ─── -->
+  <h2 id="reports"><span class="num">12</span>Reports</h2>
+  <p class="h2sub">All reports are in the Reports page — admin only. Each report opens as a printable modal.</p>
+
+  <table>
+    <thead><tr><th style="width:38%">Report</th><th>What it shows</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Athlete Numbers List</b></td>
+        <td>Full list of athletes with their bib numbers, age group, and team. Useful for producing numbered bibs.</td>
+      </tr>
+      <tr>
+        <td><b>Club Athlete Roster</b></td>
+        <td>Athletes filtered by team. Shows name, bib, age group, and payment status. Filter by <code>teamId</code>.</td>
+      </tr>
+      <tr>
+        <td><b>Top Performers</b></td>
+        <td>Athletes ranked by total points within an age group. Filter by <code>ageGroupId</code>.</td>
+      </tr>
+      <tr>
+        <td><b>Age Group Athlete Summary</b></td>
+        <td>Per-age-group breakdown of athlete counts per event. Includes a filter to hide events below a threshold count.</td>
+      </tr>
+      <tr>
+        <td><b>Team Overall Standings</b></td>
+        <td>Full standings table — each team's total points across all events, ranked.</td>
+      </tr>
+      <tr>
+        <td><b>Athlete Marshalling &amp; Call Sheet</b></td>
+        <td>Groups athletes by sport type, gender, and age group for marshalling. Filter by sport type, gender, or specific age groups.</td>
+      </tr>
+      <tr>
+        <td><b>Heat Sheet / Entry Report</b></td>
+        <td>Randomised heat lane assignments. TRACK: Position × Heat grid. FIELD: Round 1–6 table per athlete. Each age group prints on its own page. A "Re-randomize" button reshuffles without re-fetching.</td>
+      </tr>
+      <tr>
+        <td><b>Team Game Entry Report</b></td>
+        <td>One page per Team Game event — squad list, score column, position column, a Finals placement grid (1st–4th), and a signatures row. No bib numbers.</td>
+      </tr>
+      <tr>
+        <td><b>Data Validation Report</b></td>
+        <td>Six-section audit: age group overlaps, athletes without age groups, events without schedules, empty schedules, leaderboard mismatches, and orphaned entries. See section 14.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Printing a report</h3>
+  <ol class="steps">
+    <li><b>Open the Reports page</b><span>Click Reports in the admin sidebar.</span></li>
+    <li><b>Click the report button</b><span>A modal opens with filters and a preview.</span></li>
+    <li><b>Apply any filters</b><span>Most reports have dropdowns or toggles to narrow the data.</span></li>
+    <li><b>Click Print</b><span>Your browser's print dialog opens. Choose "Save as PDF" to keep a file, or send to a printer.</span></li>
+  </ol>
+
+  <!-- ─── 13 SPORT CONFIG ─── -->
+  <h2 id="sportconfig"><span class="num">13</span>Sport config</h2>
+  <p class="h2sub">Central settings for how the competition is scored and managed.</p>
+
+  <p>Go to <b>Sport Config</b> in the admin sidebar (or click the gear icon). Settings are grouped by category.</p>
+
+  <h3>General settings</h3>
+  <table>
+    <thead><tr><th style="width:42%">Setting</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Age Calculation Date</b></td>
+        <td>The reference date used to calculate every athlete's decimal age. Set this once before the competition starts and do not change it mid-event — all age group placements depend on it.</td>
+      </tr>
+      <tr>
+        <td><b>Public Registration</b></td>
+        <td>Toggle whether the "Create account" link appears on the login page. When disabled, only admins can create new user accounts.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Points tables</h3>
+  <p>There is a separate points table for each sport type: <b>Track</b>, <b>Field</b>, and <b>Team Game</b>. Each table maps a finishing position (1st, 2nd, 3rd…) to a number of points.</p>
+
+  <div class="tipGrid">
+    <div class="tipCard">
+      <div class="label">Example</div>
+      <h4>Track points</h4>
+      <p>Position 1 → 10 pts, Position 2 → 8 pts, Position 3 → 6 pts, Position 4 → 5 pts, and so on.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Note</div>
+      <h4>Changes apply to new results only.</h4>
+      <p>Updating a points table does not retroactively change already-recorded results. If you need to recalculate, use the Data Validation → Rebuild Leaderboard tool.</p>
+    </div>
+  </div>
+
+  <div class="note gold">
+    <b>Certificate coordinates</b>
+    You can configure the x/y positions (in mm) for where rank labels are placed on printed certificates — one set of coordinates per rank (1st, 2nd, 3rd). This is used by the certificate print feature if enabled.
+  </div>
+
+  <!-- ─── 14 VALIDATION ─── -->
+  <h2 id="validation"><span class="num">14</span>Data validation</h2>
+  <p class="h2sub">The Validation report is a full audit of your event data — run it before and during the competition to catch problems early.</p>
+
+  <p>Go to <b>Reports → Data Validation Report</b>. The report runs six checks:</p>
+
+  <table>
+    <thead><tr><th style="width:38%">Check</th><th>What it flags</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Age group overlaps</b></td>
+        <td>Any two age groups whose decimal age ranges overlap. Uses exclusive lower bound logic <code>(minAge, maxAge]</code>. Overlapping groups mean an athlete could fall into two categories.</td>
+      </tr>
+      <tr>
+        <td><b>Athletes without age groups</b></td>
+        <td>Athletes whose assigned age group has been deleted or is missing. These athletes cannot be placed in any event.</td>
+      </tr>
+      <tr>
+        <td><b>Events without schedules</b></td>
+        <td>Events that have no age-group schedules (Track/Field) or no team event schedule (Team Game).</td>
+      </tr>
+      <tr>
+        <td><b>Schedules with no athletes</b></td>
+        <td>Age-group schedules where no athlete in that age group exists.</td>
+      </tr>
+      <tr>
+        <td><b>Leaderboard mismatches</b></td>
+        <td>Cases where a team's leaderboard total doesn't match the sum of their recorded performance or team entry points (tolerance: 0.01). Indicates a calculation or data bug.</td>
+      </tr>
+      <tr>
+        <td><b>Orphaned entries</b></td>
+        <td>Results or team entries that reference deleted events, age groups, or athletes.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Rebuild Leaderboard</h3>
+  <p>If the validation report shows leaderboard mismatches, click <b>Rebuild Leaderboard</b>. This re-aggregates all points from the source tables (<code>athlete_performance</code> and <code>team_entry</code>) into the leaderboard. It fixes aggregation bugs but does <b>not</b> recalculate individual point values.</p>
+
+  <div class="note warn">
+    <b>Manual trigger only</b>
+    The rebuild does not run automatically on page load. An admin must click the button deliberately to apply it.
+  </div>
+
+  <!-- ─── 15 USERS ─── -->
+  <h2 id="users"><span class="num">15</span>User management</h2>
+  <p class="h2sub">Admins can view and manage all user accounts from the Users page.</p>
+
+  <p>Go to <b>Users</b> in the admin sidebar. The full user list loads with client-side filtering:</p>
+
+  <div class="tipGrid">
+    <div class="tipCard">
+      <div class="label">Filter</div>
+      <h4>Search by name or email</h4>
+      <p>Free-text search across full name and email address. Results update as you type. Searching resets the letter filter.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Filter</div>
+      <h4>Role toggles</h4>
+      <p>Pill buttons for each role — ADMIN, ATHLETE, SPECTATOR. Toggle any on or off. Default view excludes ATHLETEs to reduce noise.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Filter</div>
+      <h4>A–Z letter pagination</h4>
+      <p>Filter by the first letter of the user's full name. Only letters with matching users are enabled.</p>
+    </div>
+    <div class="tipCard">
+      <div class="label">Note</div>
+      <h4>Athlete accounts</h4>
+      <p>When an athlete is created on the Athletes page, a linked user account is created automatically. Deleting the athlete also deletes the account.</p>
+    </div>
+  </div>
+
+  <h3>Roles</h3>
+  <table>
+    <thead><tr><th>Role</th><th>Access</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="role admin">ADMIN</span></td>
+        <td>Full read and write access to all data, reports, and configuration.</td>
+      </tr>
+      <tr>
+        <td><span class="role public">ATHLETE</span></td>
+        <td>Can log in but has limited access — primarily used to associate a person with an athlete profile.</td>
+      </tr>
+      <tr>
+        <td><span class="pill">SPECTATOR</span></td>
+        <td>Authenticated but no special access beyond the public pages. Useful for giving someone a login without admin rights.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note gold">
+    <b>Only ADMINs can write data</b>
+    All create, edit, and delete operations on any entity require the ADMIN role. Athletes and Spectators can only view the same public pages available to unauthenticated visitors.
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Community Sports App — User Guide · AmuOvi · June 2026
+    <br><br>
+    <a href="index.html" style="color:var(--primary);text-decoration:none;font-family:var(--sans);font-size:12px;font-style:normal">← Back to all guides</a>
+  </div>
+
+</div>
+</body>
+</html>
