@@ -2,7 +2,7 @@
 
 User guides for all AmuOvi apps, hosted on GitHub Pages.
 
-**Live site → https://gerom.github.io/AmuOvi/**
+**Live site → https://geromer.github.io/AmuOvi/groceryShoppingCart.html**
 
 ## Apps covered
 
